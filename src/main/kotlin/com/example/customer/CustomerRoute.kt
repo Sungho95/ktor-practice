@@ -43,5 +43,18 @@ fun Route.customerRouting() {
                 call.respondText(text = "Not Found", status = HttpStatusCode.NotFound)
             }
         }
+
+        get("{id?}/hello") {
+            val id = call.parameters["id"] ?: return@get call.respondText(
+                text = "Missing id",
+                status = HttpStatusCode.BadRequest
+            )
+
+            val customer = customerStorage.find { it.id == id } ?: return@get call.respondText(
+                text = "No customer with id $id",
+                status = HttpStatusCode.NotFound
+            )
+            call.respond(customer.hello(customer.firstName))
+        }
     }
 }

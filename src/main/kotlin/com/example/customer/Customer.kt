@@ -14,4 +14,8 @@ data class Customer(
     }
 }
 
-val customerStorage = mutableListOf<Customer>()
+val customerStorage = mutableListOf<Customer>(
+    Customer(id = "100", firstName = "Jane", lastName = "Smith", email = "jane.smith@company.com"),
+    Customer(id = "200", firstName = "John", lastName = "Smith", email = "john.smith@company.com"),
+    Customer(id = "300", firstName = "Mary", lastName = "Smith", email = "mary.smith@company.com")
+)
