@@ -7,7 +7,7 @@ import io.ktor.server.testing.*
 import org.junit.Assert.*
 import org.junit.Test
 
-class OrderRouteTest {
+class OrderRouterTest {
 
     @Test
     fun getOrderTest() = testApplication {

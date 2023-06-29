@@ -1,18 +1,18 @@
 package com.example.plugins
 
-import com.example.customer.customerRouting
-import com.example.order.getOrderRoute
-import com.example.order.listOrdersRoute
-import com.example.order.totalizeOrderRoute
+import com.example.customer.customerRouter
+import com.example.order.getOrderRouter
+import com.example.order.listOrdersRouter
+import com.example.order.totalizeOrderRouter
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
 
 
 fun Application.configureRouting() {
     routing {
-        customerRouting()
-        listOrdersRoute()
-        getOrderRoute()
-        totalizeOrderRoute()
+        customerRouter()
+        listOrdersRouter()
+        getOrderRouter()
+        totalizeOrderRouter()
     }
 }

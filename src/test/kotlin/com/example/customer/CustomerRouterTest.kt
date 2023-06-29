@@ -9,7 +9,7 @@ import io.ktor.util.*
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class CustomerRouteTest {
+class CustomerRouterTest {
 
     @Test
     fun getCustomerListTest() = testApplication{
