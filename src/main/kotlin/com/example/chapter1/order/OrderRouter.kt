@@ -1,4 +1,4 @@
-package com.example.order
+package com.example.chapter1.order
 
 import io.ktor.http.*
 import io.ktor.server.application.*

@@ -1,4 +1,4 @@
-package com.example.customer
+package com.example.chapter1.customer
 
 import io.ktor.http.*
 import io.ktor.server.application.*

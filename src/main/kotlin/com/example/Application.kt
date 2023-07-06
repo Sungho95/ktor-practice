@@ -1,5 +1,6 @@
 package com.example
 
+import com.example.plugins.configureSockets
 import io.ktor.server.application.*
 import com.example.plugins.*
 
