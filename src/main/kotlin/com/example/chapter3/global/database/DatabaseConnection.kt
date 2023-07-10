@@ -1,8 +1,6 @@
 package com.example.chapter3.global.database
 
-import com.example.chapter3.domain.member.entity.MemberTable
 import org.ktorm.database.Database
-import org.ktorm.entity.sequenceOf
 
 object DatabaseConnection {
     val database: Database =
