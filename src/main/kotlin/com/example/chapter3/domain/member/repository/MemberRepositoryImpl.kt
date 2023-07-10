@@ -10,6 +10,7 @@ import org.ktorm.entity.sequenceOf
 
 class MemberRepositoryImpl : MemberRepository {
     private val database = DatabaseConnection.database
+
     override fun findAll(): List<Member> {
 
         return database.from(MemberTable)
