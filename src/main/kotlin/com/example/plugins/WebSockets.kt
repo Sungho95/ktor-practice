@@ -1,6 +1,6 @@
 package com.example.plugins
 
-import com.example.websocket.Connection
+import com.example.chapter2.websocket.Connection
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
 import io.ktor.server.websocket.*

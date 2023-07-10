@@ -1,4 +1,4 @@
-package com.example.order
+package com.example.chapter1.order
 
 import kotlinx.serialization.Serializable
 

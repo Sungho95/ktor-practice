@@ -1,4 +1,4 @@
-package com.example.websocket
+package com.example.chapter2.websocket
 
 import io.ktor.websocket.*
 import java.util.concurrent.atomic.AtomicInteger
