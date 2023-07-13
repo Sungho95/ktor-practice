@@ -10,4 +10,6 @@ interface MemberService {
     fun getMemberList(): List<MemberResponse>
 
     fun getMember(id: Long): MemberResponse
+
+    fun deleteMember(id: Long)
 }

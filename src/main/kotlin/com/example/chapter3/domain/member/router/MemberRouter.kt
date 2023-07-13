@@ -18,12 +18,38 @@ fun Route.memberRouter() {
             call.respond(status = HttpStatusCode.OK, message = response)
         }
 
+        get("{id}") {
+            val id = call.parameters["id"] ?: return@get call.respondText(
+                text = "회원을 식별할 수 없습니다.",
+                status = HttpStatusCode.BadRequest
+            )
+            val response = id.toLong().let {
+                memberService.getMember(it)
+            }
+
+            call.respond(status = HttpStatusCode.OK, message = response)
+        }
+
         post {
             val body = call.receive<MemberPost>()
             memberService.createMember(body)
 
             val createdMember = memberService.getMemberList().last()
             call.respond(HttpStatusCode.Created, createdMember)
+        }
+
+        delete("{id}") {
+            val id = call.parameters["id"] ?: return@delete call.respondText(
+                text = "회원을 식별할 수 없습니다.",
+                status = HttpStatusCode.BadRequest
+            )
+            id.toLong().let {
+                memberService.deleteMember(it)
+            }
+            call.respondText(
+                text = "$id 회원 탈퇴 성공",
+                status = HttpStatusCode.OK
+            )
         }
     }
 }
