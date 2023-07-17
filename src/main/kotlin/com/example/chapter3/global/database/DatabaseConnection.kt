@@ -1,10 +1,7 @@
 package com.example.chapter3.global.database
 
 
-import com.example.chapter3.global.configuration.dbDriver
-import com.example.chapter3.global.configuration.dbPassword
-import com.example.chapter3.global.configuration.dbUrl
-import com.example.chapter3.global.configuration.dbUsername
+import com.example.chapter3.global.configuration.*
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import org.ktorm.database.Database
@@ -17,8 +14,8 @@ object DatabaseConnection {
     val database = Database.connect(
         dataSource = HikariDataSource(
             HikariConfig().apply {
-                jdbcUrl = dbUrl
-                driverClassName = dbDriver
+                jdbcUrl = dbJdbcUrl
+                driverClassName = dbDriverClassName
                 username = dbUsername
                 password = dbPassword
             }

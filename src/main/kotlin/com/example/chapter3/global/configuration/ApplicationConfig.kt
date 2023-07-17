@@ -35,11 +35,14 @@ data class DatabaseConfig(
     val password: String
 )
 
-val objectMapper = ObjectMapper(YAMLFactory()).registerModule(KotlinModule())
-val yamlFile = File("src/main/resources/application.yaml")
-val yamlConfig: YamlConfig = objectMapper.readValue(yamlFile, YamlConfig::class.java)
+fun loadYamlConfig(): YamlConfig {
+    val objectMapper = ObjectMapper(YAMLFactory()).registerModule(KotlinModule())
+    val yamlFile = File("src/main/resources/application.yaml")
+    return objectMapper.readValue(yamlFile, YamlConfig::class.java)
+}
 
-val dbUrl = yamlConfig.ktorm.database.url
-val dbDriver = yamlConfig.ktorm.database.driver
+val yamlConfig = loadYamlConfig()
+val dbJdbcUrl = yamlConfig.ktorm.database.url
+val dbDriverClassName = yamlConfig.ktorm.database.driver
 val dbUsername = yamlConfig.ktorm.database.username
 val dbPassword = yamlConfig.ktorm.database.password
