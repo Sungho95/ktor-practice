@@ -4,6 +4,7 @@ val ktorm_version: String by project
 val logback_version: String by project
 val mysql_version: String by project
 val koin_version: String by project
+val hikari_version: String by project
 
 plugins {
     kotlin("jvm") version "1.8.22"
@@ -41,6 +42,11 @@ dependencies {
     implementation("org.ktorm:ktorm-jackson:$ktorm_version")
     implementation("org.ktorm:ktorm-support-mysql:$ktorm_version")
     implementation("mysql:mysql-connector-java:$mysql_version")
+    implementation("com.zaxxer:HikariCP:$hikari_version")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.2")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.2")
+
 
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
