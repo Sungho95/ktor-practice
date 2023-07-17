@@ -14,10 +14,10 @@ object DatabaseConnection {
     val database = Database.connect(
         dataSource = HikariDataSource(
             HikariConfig().apply {
-                jdbcUrl = dbJdbcUrl
-                driverClassName = dbDriverClassName
-                username = dbUsername
-                password = dbPassword
+                jdbcUrl = yamlConfig.ktorm.database.url
+                driverClassName = yamlConfig.ktorm.database.driver
+                username = yamlConfig.ktorm.database.username
+                password = yamlConfig.ktorm.database.password
             }
         ),
         dialect = MySqlDialect(),

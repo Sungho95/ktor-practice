@@ -42,7 +42,3 @@ fun loadYamlConfig(): YamlConfig {
 }
 
 val yamlConfig = loadYamlConfig()
-val dbJdbcUrl = yamlConfig.ktorm.database.url
-val dbDriverClassName = yamlConfig.ktorm.database.driver
-val dbUsername = yamlConfig.ktorm.database.username
-val dbPassword = yamlConfig.ktorm.database.password
