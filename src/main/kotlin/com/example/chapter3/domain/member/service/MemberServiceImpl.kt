@@ -28,17 +28,17 @@ class MemberServiceImpl(
         }
 
         return findMemberList.map { member ->
-            MemberResponse(member.id, member.name, member.age)
+            MemberResponse.from(member)
         }
     }
 
     override fun getMember(id: Long): MemberResponse {
         val member = memberRepository.findById(id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
-        return MemberResponse(member.id, member.name, member.age)
+        return MemberResponse.from(member)
     }
 
     override fun deleteMember(id: Long) {
         val member = memberRepository.findById(id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
-        return memberRepository.delete(member)
+        memberRepository.delete(member)
     }
 }

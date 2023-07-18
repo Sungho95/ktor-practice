@@ -9,7 +9,7 @@ data class MemberResponse(
 ) {
 
     companion object {
-        fun of(member: Member) =
+        fun from(member: Member) =
             MemberResponse(
                 id = member.id,
                 name = member.name,
