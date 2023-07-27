@@ -12,7 +12,7 @@ object ArticleTable : Table<Article>("article") {
     val title = varchar("name").bindTo { it.title }
     val content = varchar("content").bindTo { it.content }
     val category = varchar("category").bindTo { it.category }
-    val memberId = varchar("member_id").references(MemberTable) { it.member }
+    val memberId = long("member_id").references(MemberTable) { it.member }
 }
 
 interface Article : Entity<Article> {
