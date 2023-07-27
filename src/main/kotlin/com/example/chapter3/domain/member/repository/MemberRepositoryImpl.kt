@@ -27,15 +27,17 @@ class MemberRepositoryImpl : MemberRepository {
             .find { it.id eq id }
     }
 
-    override fun save(member: Member) {
-        database.insert(MemberTable) {
+    override fun save(member: Member): Member {
+        val savedMemberId = database.insertAndGenerateKey(MemberTable) {
             set(it.id, member.id)
             set(it.name, member.name)
             set(it.age, member.age)
-        }
+        } as Long
+
+        return findById(savedMemberId)!!
     }
 
-    override fun update(member: Member) {
+    override fun update(member: Member): Member {
         database.update(MemberTable) {
             set(it.name, member.name)
             set(it.age, member.age)
@@ -43,6 +45,8 @@ class MemberRepositoryImpl : MemberRepository {
                 it.id eq member.id
             }
         }
+
+        return findById(member.id)!!
     }
 
     override fun delete(member: Member) {

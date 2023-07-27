@@ -1,5 +1,6 @@
 package com.example.chapter3.domain.member.router
 
+import com.example.chapter3.domain.member.dto.request.MemberPatch
 import com.example.chapter3.domain.member.dto.request.MemberPost
 import com.example.chapter3.domain.member.service.MemberService
 import io.ktor.http.*
@@ -13,6 +14,13 @@ fun Route.memberRouter() {
     val memberService: MemberService by inject()
 
     route("/api/v1/members") {
+        post {
+            val body = call.receive<MemberPost>()
+            val response = memberService.createMember(body)
+
+            call.respond(HttpStatusCode.Created, response)
+        }
+
         get {
             val response = memberService.getMemberList()
             call.respond(status = HttpStatusCode.OK, message = response)
@@ -30,12 +38,11 @@ fun Route.memberRouter() {
             call.respond(status = HttpStatusCode.OK, message = response)
         }
 
-        post {
-            val body = call.receive<MemberPost>()
-            memberService.createMember(body)
+        patch() {
+            val body = call.receive<MemberPatch>()
+            val response = memberService.updateMember(body)
 
-            val createdMember = memberService.getMemberList().last()
-            call.respond(HttpStatusCode.Created, createdMember)
+            call.respond(status = HttpStatusCode.OK, message = response)
         }
 
         delete("{id}") {

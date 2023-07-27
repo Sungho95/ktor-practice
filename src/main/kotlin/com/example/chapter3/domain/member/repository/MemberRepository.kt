@@ -8,9 +8,9 @@ interface MemberRepository {
 
     fun findById(id: Long): Member?
 
-    fun save(member: Member)
+    fun save(member: Member): Member
 
-    fun update(member: Member)
+    fun update(member: Member): Member
 
     fun delete(member: Member)
 }

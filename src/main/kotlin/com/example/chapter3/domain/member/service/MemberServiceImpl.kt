@@ -1,5 +1,6 @@
 package com.example.chapter3.domain.member.service
 
+import com.example.chapter3.domain.member.dto.request.MemberPatch
 import com.example.chapter3.domain.member.dto.request.MemberPost
 import com.example.chapter3.domain.member.dto.response.MemberResponse
 import com.example.chapter3.domain.member.entity.Member
@@ -11,13 +12,15 @@ class MemberServiceImpl(
 
 ) : MemberService {
 
-    override fun createMember(memberPostDto: MemberPost) {
+    override fun createMember(memberPostDto: MemberPost): MemberResponse {
         val member = Member {
             name = memberPostDto.name
             age = memberPostDto.age
         }
 
-        memberRepository.save(member)
+        val savedMember = memberRepository.save(member)
+
+        return MemberResponse.from(savedMember)
     }
 
     override fun getMemberList(): List<MemberResponse> {
@@ -35,6 +38,15 @@ class MemberServiceImpl(
     override fun getMember(id: Long): MemberResponse {
         val member = memberRepository.findById(id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
         return MemberResponse.from(member)
+    }
+
+    override fun updateMember(memberPatch: MemberPatch): MemberResponse {
+        val member = memberRepository.findById(memberPatch.id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
+        member.name = memberPatch.name
+        member.age = memberPatch.age
+        val updatedMember = memberRepository.update(member)
+
+        return MemberResponse.from(updatedMember)
     }
 
     override fun deleteMember(id: Long) {
