@@ -5,7 +5,6 @@ import com.example.chapter3.domain.member.dto.request.MemberPost
 import com.example.chapter3.domain.member.dto.response.MemberResponse
 
 interface MemberService {
-
     fun createMember(memberPost: MemberPost): MemberResponse
 
     fun getMemberList(): List<MemberResponse>
