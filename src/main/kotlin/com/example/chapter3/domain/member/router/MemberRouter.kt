@@ -1,7 +1,7 @@
 package com.example.chapter3.domain.member.router
 
-import com.example.chapter3.domain.member.dto.request.MemberPatch
-import com.example.chapter3.domain.member.dto.request.MemberPost
+import com.example.chapter3.domain.member.dto.MemberPatch
+import com.example.chapter3.domain.member.dto.MemberPost
 import com.example.chapter3.domain.member.service.MemberService
 import io.ktor.http.*
 import io.ktor.server.application.*

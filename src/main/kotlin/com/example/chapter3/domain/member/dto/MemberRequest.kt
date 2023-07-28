@@ -1,4 +1,4 @@
-package com.example.chapter3.domain.member.dto.request
+package com.example.chapter3.domain.member.dto
 
 data class MemberPost(
     val name: String,

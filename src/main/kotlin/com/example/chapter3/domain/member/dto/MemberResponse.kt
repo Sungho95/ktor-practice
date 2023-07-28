@@ -1,4 +1,4 @@
-package com.example.chapter3.domain.member.dto.response
+package com.example.chapter3.domain.member.dto
 
 import com.example.chapter3.domain.member.entity.Member
 
