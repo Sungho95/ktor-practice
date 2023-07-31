@@ -23,7 +23,6 @@ data class DeploymentConfig(
     val port: Int
 )
 
-
 data class KtormConfig(
     val database: DatabaseConfig
 )
