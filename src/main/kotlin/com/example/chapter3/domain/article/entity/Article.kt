@@ -22,5 +22,5 @@ interface Article : Entity<Article> {
     var title: String
     var content: String
     var category: String
-    val member: Member
+    var member: Member
 }

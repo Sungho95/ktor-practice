@@ -23,6 +23,7 @@ fun Route.memberRouter() {
 
         get {
             val response = memberService.getMemberList()
+
             call.respond(status = HttpStatusCode.OK, message = response)
         }
 
@@ -38,7 +39,7 @@ fun Route.memberRouter() {
             call.respond(status = HttpStatusCode.OK, message = response)
         }
 
-        patch() {
+        patch {
             val body = call.receive<MemberPatch>()
             val response = memberService.updateMember(body)
 

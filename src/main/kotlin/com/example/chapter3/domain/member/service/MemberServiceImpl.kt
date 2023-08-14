@@ -12,10 +12,10 @@ class MemberServiceImpl(
 
 ) : MemberService {
 
-    override fun createMember(memberPostDto: MemberPost): MemberResponse {
+    override fun createMember(memberPost: MemberPost): MemberResponse {
         val member = Member {
-            name = memberPostDto.name
-            age = memberPostDto.age
+            name = memberPost.name
+            age = memberPost.age
         }
 
         val savedMember = memberRepository.save(member)
