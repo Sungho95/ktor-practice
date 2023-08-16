@@ -56,7 +56,7 @@ fun Route.memberRouter() {
             }
             call.respondText(
                 text = "$id 회원 탈퇴 성공",
-                status = HttpStatusCode.OK
+                status = HttpStatusCode.NoContent
             )
         }
     }
