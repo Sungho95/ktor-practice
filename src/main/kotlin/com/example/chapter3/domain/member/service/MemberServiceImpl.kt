@@ -35,6 +35,7 @@ class MemberServiceImpl(
 
     override fun getMember(id: Long): MemberResponse {
         val findMember = memberRepository.findById(id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
+
         return MemberResponse.from(findMember)
     }
 
@@ -49,6 +50,7 @@ class MemberServiceImpl(
 
     override fun deleteMember(id: Long) {
         val findMember = memberRepository.findById(id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
+
         memberRepository.delete(findMember)
     }
 }
