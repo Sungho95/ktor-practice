@@ -8,7 +8,6 @@ import com.example.chapter3.domain.member.router.memberRouter
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
 
-
 fun Application.configureRouting() {
     routing {
         customerRouter()

@@ -1,5 +1,6 @@
 package com.example
 
+import com.example.chapter3.domain.article.router.articleConfigureRouting
 import com.example.plugins.configureSockets
 import io.ktor.server.application.*
 import com.example.plugins.*
@@ -12,4 +13,5 @@ fun Application.module() {
     configureSerialization()
     configureSockets()
     configureKoin()
+    articleConfigureRouting()
 }

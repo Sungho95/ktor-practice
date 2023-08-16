@@ -1,5 +1,9 @@
 package com.example.plugins
 
+import com.example.chapter3.domain.article.repository.ArticleRepository
+import com.example.chapter3.domain.article.repository.ArticleRepositoryImpl
+import com.example.chapter3.domain.article.service.ArticleService
+import com.example.chapter3.domain.article.service.ArticleServiceImpl
 import com.example.chapter3.domain.member.repository.MemberRepository
 import com.example.chapter3.domain.member.repository.MemberRepositoryImpl
 import com.example.chapter3.domain.member.service.MemberService
@@ -19,4 +23,6 @@ fun Application.configureKoin() {
 val appModule = module {
     single<MemberRepository> { MemberRepositoryImpl() }
     single<MemberService> { MemberServiceImpl(get()) }
+    single<ArticleRepository> { ArticleRepositoryImpl() }
+    single<ArticleService> { ArticleServiceImpl(get(), get()) }
 }

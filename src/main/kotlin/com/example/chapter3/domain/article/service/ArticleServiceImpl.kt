@@ -13,6 +13,7 @@ class ArticleServiceImpl(
     private val memberRepository: MemberRepository
 
 ) : ArticleService {
+
     override fun createArticle(articlePost: ArticlePost): ArticleResponse {
         val findMember = memberRepository.findById(articlePost.memberId)
             ?: throw RuntimeException("회원을 찾을 수 없습니다.")
@@ -30,20 +31,40 @@ class ArticleServiceImpl(
     }
 
     override fun getArticleList(): List<ArticleResponse> {
-        TODO("Not yet implemented")
+        val findArticleList = articleRepository.findAll()
+
+        if (findArticleList.isEmpty()) {
+            throw RuntimeException("게시글 목록을 찾을 수 없습니다.")
+        }
+
+        return findArticleList.map { ArticleResponse.from(it) }
     }
 
     override fun getArticle(id: Long): ArticleResponse {
-        TODO("Not yet implemented")
+        val findArticle = articleRepository.findById(id) ?: throw RuntimeException("게시글을 찾을 수 없습니다.")
+
+        return ArticleResponse.from(findArticle)
     }
 
     override fun updateArticle(articlePatch: ArticlePatch): ArticleResponse {
-        TODO("Not yet implemented")
+        val findArticle = articleRepository.findById(articlePatch.id)
+            ?: throw RuntimeException("게시글을 찾을 수 없습니다.")
+
+        if (articlePatch.memberId != findArticle.member.id) {
+            throw RuntimeException("수정할 수 없습니다.")
+        }
+
+        findArticle.title = articlePatch.title
+        findArticle.content = articlePatch.content
+        findArticle.category = articlePatch.category
+        val updateArticle = articleRepository.update(findArticle)
+
+        return ArticleResponse.from(updateArticle)
     }
 
     override fun deleteArticle(id: Long) {
-        TODO("Not yet implemented")
+        val findArticle = articleRepository.findById(id) ?: throw RuntimeException("게시글을 찾을 수 없습니다.")
+
+        articleRepository.delete(findArticle)
     }
-
-
 }
