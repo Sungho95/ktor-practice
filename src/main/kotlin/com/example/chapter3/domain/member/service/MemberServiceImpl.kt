@@ -27,30 +27,28 @@ class MemberServiceImpl(
         val findMemberList = memberRepository.findAll()
 
         if (findMemberList.isEmpty()) {
-            throw RuntimeException("비어있음")
+            throw RuntimeException("회원 목록을 찾을 수 없습니다.")
         }
 
-        return findMemberList.map { member ->
-            MemberResponse.from(member)
-        }
+        return findMemberList.map { MemberResponse.from(it) }
     }
 
     override fun getMember(id: Long): MemberResponse {
-        val member = memberRepository.findById(id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
-        return MemberResponse.from(member)
+        val findMember = memberRepository.findById(id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
+        return MemberResponse.from(findMember)
     }
 
     override fun updateMember(memberPatch: MemberPatch): MemberResponse {
-        val member = memberRepository.findById(memberPatch.id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
-        member.name = memberPatch.name
-        member.age = memberPatch.age
-        val updatedMember = memberRepository.update(member)
+        val findMember = memberRepository.findById(memberPatch.id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
+        findMember.name = memberPatch.name
+        findMember.age = memberPatch.age
+        val updatedMember = memberRepository.update(findMember)
 
         return MemberResponse.from(updatedMember)
     }
 
     override fun deleteMember(id: Long) {
-        val member = memberRepository.findById(id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
-        memberRepository.delete(member)
+        val findMember = memberRepository.findById(id) ?: throw RuntimeException("회원을 찾을 수 없습니다.")
+        memberRepository.delete(findMember)
     }
 }
