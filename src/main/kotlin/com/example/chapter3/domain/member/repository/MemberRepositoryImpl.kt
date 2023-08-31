@@ -13,6 +13,7 @@ class MemberRepositoryImpl : MemberRepository {
     private val database = DatabaseConnection.database
 
     override fun findAll(): List<Member> {
+//        database.useTransaction {  }
 
         return database.from(MemberTable)
             .select()

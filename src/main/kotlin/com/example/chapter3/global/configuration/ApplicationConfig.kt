@@ -41,3 +41,23 @@ fun loadYamlConfig(): YamlConfig {
 }
 
 val yamlConfig = loadYamlConfig()
+
+fun main() {
+    val applicationModules = yamlConfig.ktor.application.modules
+    val deploymentPort = yamlConfig.ktor.deployment.port
+
+    println("applicationModules = ${applicationModules}")
+    println("deploymentPort = ${deploymentPort}")
+
+    println()
+
+    val jdbcUrl = yamlConfig.ktorm.database.url
+    val jdbcDriver = yamlConfig.ktorm.database.driver
+    val username = yamlConfig.ktorm.database.username
+    val password = yamlConfig.ktorm.database.password
+
+    println("jdbcUrl = ${jdbcUrl}")
+    println("jdbcDriver = ${jdbcDriver}")
+    println("username = ${username}")
+    println("password = ${password}")
+}
